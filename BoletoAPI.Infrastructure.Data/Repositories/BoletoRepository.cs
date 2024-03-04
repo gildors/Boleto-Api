@@ -7,7 +7,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 {
     public class BoletoRepository : IBoletoRepository
     {
-        public string RetornarHTML(DadosBoleto dadosBoleto)
+        public string? RetornarHTML(DadosBoleto dadosBoleto)
         {
             var boleto = GerarBoleto(dadosBoleto);
 
@@ -16,8 +16,17 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
             return boletoBancario.MontaHtmlEmbedded();
         }
 
-        private Boleto GerarBoleto(DadosBoleto dadosBoleto)
+        private Boleto? GerarBoleto(DadosBoleto dadosBoleto)
         {
+            if (dadosBoleto == null || 
+                dadosBoleto.Sacado == null || 
+                dadosBoleto.Sacado.Endereco == null ||
+                dadosBoleto.Beneficiario == null || 
+                dadosBoleto.Beneficiario.ContaBancaria == null)
+            {
+                return null;
+            }
+
             IBanco _banco = ObterTipoBanco(dadosBoleto.TipoBanco);
 
             _banco.Beneficiario = PreencherDadosBeneficiario(dadosBoleto.Beneficiario, dadosBoleto.Beneficiario.ContaBancaria);
@@ -162,13 +171,17 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
             return Encoding.ASCII.GetString(memoryStream.ToArray());
         }
 
-        public string RetornarRemessa(DadosRemessa dadosRemessa)
+        public string? RetornarRemessa(DadosRemessa dadosRemessa)
         {
             List<Boleto> boletos = [];
 
             foreach (var dadosBoleto in dadosRemessa.DadosBoletos)
             {
                 var boleto = GerarBoleto(dadosBoleto);
+                
+                if (boleto == null) 
+                    return null;
+                
                 boletos.Add(boleto);
             }
 

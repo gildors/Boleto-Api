@@ -14,7 +14,7 @@
         public bool MostrarCnpj { get; private set; } = false;
 
         // Propriedade de navegação
-        public ContaBancaria ContaBancaria { get; private set; }
+        public ContaBancaria? ContaBancaria { get; private set; }
 
         #endregion Propriedades
 

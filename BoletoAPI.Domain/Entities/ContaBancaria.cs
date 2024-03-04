@@ -34,9 +34,6 @@
             if (string.IsNullOrEmpty(carteiraPadrao))
                 throw new ArgumentException($"{nameof(CarteiraPadrao)} inválido: O campo é obrigatório");
 
-            if (string.IsNullOrEmpty(digitoAgencia))
-                throw new ArgumentException($"{nameof(DigitoAgencia)} inválido: O campo é obrigatório");
-
             if (string.IsNullOrEmpty(digitoConta))
                 throw new ArgumentException($"{nameof(DigitoConta)} inválido: O campo é obrigatório");
 

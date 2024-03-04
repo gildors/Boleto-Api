@@ -14,9 +14,9 @@
         public string TipoBanco { get; set; } = string.Empty;
 
         // Propriedades de navegação publica
-        public Sacado Sacado { get; private set; }
+        public Sacado? Sacado { get; private set; }
 
-        public DadosBeneficiario Beneficiario { get; private set; }
+        public DadosBeneficiario? Beneficiario { get; private set; }
 
         #endregion Propriedades
 

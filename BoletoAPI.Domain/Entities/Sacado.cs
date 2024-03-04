@@ -8,7 +8,7 @@
         public string Cpf { get; private set; } = string.Empty;
 
         // Propriedades de navegação
-        public DadosEndereco Endereco { get; private set; }
+        public DadosEndereco? Endereco { get; private set; }
 
         #endregion Propriedades
 
