@@ -1,6 +1,7 @@
 ﻿using BoletoAPI.Domain.Entities;
 using BoletoAPI.Domain.Interfaces;
 using BoletoNetCore;
+using BoletoNetCore.Enums;
 using System.Text;
 
 namespace BoletoAPI.Infrastructure.Data.Repositories
@@ -15,7 +16,12 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 
             return boletoBancario.MontaHtmlEmbedded();
         }
+        public string? RetornarLinhaDigitavel(DadosBoleto dadosBoleto)
+        {
+            var boleto = GerarBoleto(dadosBoleto);
 
+            return boleto?.CodigoBarra.LinhaDigitavel;
+        }
         private Boleto? GerarBoleto(DadosBoleto dadosBoleto)
         {
             if (dadosBoleto == null || 
@@ -122,18 +128,29 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
         {
             var boleto = new Boleto(banco)
             {
+                ImprimirValoresAuxiliares = true,
+                EspecieDocumento = TipoEspecieDocumento.DS,
                 NossoNumero = dadosBoleto.NossoNumero,
-                Pagador = DadosSacado(sacado, endereco),
+                NumeroDocumento = dadosBoleto.NumeroDocumento,
+                ValorTitulo = dadosBoleto.Valor,
+
+
                 DataEmissao = dadosBoleto.DataEmissao,
                 DataProcessamento = dadosBoleto.DataProcessamento,
                 DataVencimento = dadosBoleto.Vencimento,
-                ValorTitulo = dadosBoleto.Valor,
-                NumeroDocumento = dadosBoleto.NumeroDocumento,
-                EspecieDocumento = TipoEspecieDocumento.DS,
-                ImprimirValoresAuxiliares = true,
+                
+                DataJuros = dadosBoleto.Vencimento,
+                PercentualJurosDia = dadosBoleto.PercentualJurosDia,
+                TipoJuros = TipoJuros.Simples,
+                
+                DataMulta = dadosBoleto.Vencimento,
+                PercentualMulta = dadosBoleto.PercentualMulta,
+                TipoCodigoMulta = TipoCodigoMulta.Percentual,
+
+                Pagador = DadosSacado(sacado, endereco),
             };
 
-            boleto.ValidarDados(); // DADOS DE PRODUÇÃO ESSA LINHA DEVE SER DESCOMENTADA
+            boleto.ValidarDados();
             return boleto;
         }
 

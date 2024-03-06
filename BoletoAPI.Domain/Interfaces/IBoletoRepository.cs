@@ -5,7 +5,8 @@ namespace BoletoAPI.Domain.Interfaces
 {
     public interface IBoletoRepository
     {
-        string? RetornarRemessa(DadosRemessa dadosRemessa);
+        string? RetornarLinhaDigitavel(DadosBoleto dadosBoleto);
         string? RetornarHTML(DadosBoleto dadosBoleto);
+        string? RetornarRemessa(DadosRemessa dadosRemessa);
     }
 }

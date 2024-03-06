@@ -19,11 +19,29 @@ namespace BoletoAPI.Apresentation.WebAPI.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [HttpPost]
         [Route("gerarHTMLBoleto")]
-        public IActionResult GetBoleto(DadosBoletoDto dadosBoletoDto)
+        public IActionResult GetHTMLBoleto(DadosBoletoDto dadosBoletoDto)
         {
             try
             {
                 var gerarHTMLBoleto = _boletoService.GerarHTMLBoleto(dadosBoletoDto);
+                return Ok(gerarHTMLBoleto);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
+        [ProducesResponseType(typeof(DadosBoletoDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [HttpPost]
+        [Route("gerarLinhaDigitavel")]
+        public IActionResult GetLinhaDigitavelBoleto(DadosBoletoDto dadosBoletoDto)
+        {
+            try
+            {
+                var gerarHTMLBoleto = _boletoService.GerarLinhaDigitavelBoleto(dadosBoletoDto);
                 return Ok(gerarHTMLBoleto);
 
             }

@@ -9,6 +9,8 @@
         public string NumeroDocumento { get; private set; } = string.Empty;
         public string? CampoLivre { get; private set; }
         public decimal Valor { get; private set; } = decimal.Zero;
+        public decimal PercentualMulta { get; private set; } = decimal.Zero;
+        public decimal PercentualJurosDia { get; private set; } = decimal.Zero;
         public DateTime DataEmissao { get; private set; } = DateTime.MinValue;
         public DateTime DataProcessamento { get; private set; } = DateTime.MinValue;
         public string TipoBanco { get; set; } = string.Empty;
@@ -22,16 +24,16 @@
 
         #region Construtores
 
-        public DadosBoleto(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
+        public DadosBoleto(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
         {
-            ValidacaoEntidade(nossoNumero, vencimento, numeroDocumento, valor, dataEmissao, dataProcessamento, tipoBanco);
+            ValidacaoEntidade(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco);
         }
 
         #endregion Construtores
 
         #region Métodos
 
-        private void ValidacaoEntidade(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
+        private void ValidacaoEntidade(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
         {
             if (string.IsNullOrEmpty(nossoNumero))
                 throw new ArgumentException($"{nameof(NossoNumero)} inválido: Campo obrigatório.");
@@ -60,6 +62,8 @@
             Valor = valor;
             DataEmissao = dataEmissao;
             TipoBanco = tipoBanco;
+            PercentualMulta = percentualMulta;
+            PercentualJurosDia = percentualJurosDia;
         }
 
         #endregion Métodos

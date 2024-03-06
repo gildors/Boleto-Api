@@ -26,6 +26,12 @@ namespace BoletoAPI.Application.Dtos
         [DisplayName("Valor")]
         public decimal Valor { get; set; } = decimal.Zero;
 
+        [DisplayName("Percentual Juros por Dia")]
+        public decimal PercentualJurosDia { get; set; } = decimal.Zero;
+
+        [DisplayName("Percentual de Multa")]
+        public decimal PercentualMulta { get; set; } = decimal.Zero;
+
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Emissão")]
         public DateTime DataEmissao { get; set; } = DateTime.MinValue;

@@ -22,6 +22,11 @@ namespace BoletoAPI.Application.Services
             var mapearDadosBoleto = _mapper.Map<DadosBoleto>(dadosBoletoDto);
             return _iBoletoRepository.RetornarHTML(mapearDadosBoleto);
         }
+        public string? GerarLinhaDigitavelBoleto(DadosBoletoDto dadosBoletoDto)
+        {
+            var mapearDadosBoleto = _mapper.Map<DadosBoleto>(dadosBoletoDto);
+            return _iBoletoRepository.RetornarLinhaDigitavel(mapearDadosBoleto);
+        }
 
         public string? GerarArquivoRemessa(DadosRemessaDto dadosRemessaDto)
         {
