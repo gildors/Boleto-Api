@@ -5,7 +5,7 @@
         #region Propriedades
 
         public string Nome { get; private set; } = string.Empty;
-        public string Cpf { get; private set; } = string.Empty;
+        public string CpfCnpj { get; private set; } = string.Empty;
 
         // Propriedades de navegação
         public DadosEndereco? Endereco { get; private set; }
@@ -14,25 +14,28 @@
 
         #region Construtores
 
-        public Sacado(string nome, string cpf)
+        public Sacado(string nome, string cpfCnpj)
         {
-            ValidacaoEntidade(nome, cpf);
+            ValidacaoEntidade(nome, cpfCnpj);
         }
 
         #endregion Construtores
 
         #region Métodos
 
-        private void ValidacaoEntidade(string nome, string cpf)
+        private void ValidacaoEntidade(string nome, string cpfCnpj)
         {
             if (string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentException($"Campo {nameof(Nome)} é obrigatório");
 
-            if (string.IsNullOrWhiteSpace(cpf) || cpf.Length != 14)
-                throw new ArgumentException($"O campo {nameof(Cpf)} deve ter 14 digitos");
+            if (cpfCnpj != null)
+                cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
+
+            if (string.IsNullOrWhiteSpace(cpfCnpj) || (cpfCnpj.Length > 14))
+                throw new ArgumentException($"{nameof(CpfCnpj)} inválido: Utilize 11 dígitos para CPF ou 14 para CNPJ.");
 
             Nome = nome;
-            Cpf = cpf;
+            CpfCnpj = cpfCnpj;
         }
 
         #endregion Métodos

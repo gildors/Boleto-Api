@@ -12,8 +12,8 @@ namespace BoletoAPI.Application.Dtos
         public string Nome { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [DisplayName("CPF")]
-        public string Cpf { get; set; } = string.Empty;
+        [DisplayName("CPF/CNPJ")]
+        public string CpfCnpj { get; set; } = string.Empty;
 
         #endregion Propriedades
 

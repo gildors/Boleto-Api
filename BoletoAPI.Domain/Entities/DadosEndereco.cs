@@ -26,8 +26,8 @@
 
         private void ValidacaoEntidade(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
         {
-            if (string.IsNullOrWhiteSpace(cep) || (cep.Length != 9))
-                throw new ArgumentException($"O campo {nameof(CEP)} deve conter 9 digitos");
+            if (string.IsNullOrWhiteSpace(cep) || (cep.Length != 8))
+                throw new ArgumentException($"O campo {nameof(CEP)} deve conter 8 digitos");
 
             if (string.IsNullOrWhiteSpace(logradouro) || (logradouro.Length < 10 || logradouro.Length > 100))
                 throw new ArgumentException($"O campo {nameof(Logradouro)} teve ter no mínimo 10 e no máximo 100 caracteres.");

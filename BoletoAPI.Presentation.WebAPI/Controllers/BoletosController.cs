@@ -41,8 +41,8 @@ namespace BoletoAPI.Apresentation.WebAPI.Controllers
         {
             try
             {
-                var gerarHTMLBoleto = _boletoService.GerarLinhaDigitavelBoleto(dadosBoletoDto);
-                return Ok(gerarHTMLBoleto);
+                var gerarLinhaDigitavelBoleto = _boletoService.GerarLinhaDigitavelBoleto(dadosBoletoDto);
+                return Ok(gerarLinhaDigitavelBoleto);
 
             }
             catch (Exception ex)

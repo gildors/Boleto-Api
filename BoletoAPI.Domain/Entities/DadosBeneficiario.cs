@@ -40,11 +40,11 @@
             if (string.IsNullOrWhiteSpace(codigoDV))
                 throw new ArgumentException($"{nameof(CodigoDV)} inválido: Campo obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(codigoFormatado))
-                throw new ArgumentException($"{nameof(CodigoFormatado)} inválido: Campo obrigatório.");
+            //if (string.IsNullOrWhiteSpace(codigoFormatado))
+            //    throw new ArgumentException($"{nameof(CodigoFormatado)} inválido: Campo obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(codigoTransmissao))
-                throw new ArgumentException($"{nameof(CodigoTransmissao)} inválido: Campo obrigatório.");
+            //if (string.IsNullOrWhiteSpace(codigoTransmissao))
+            //    throw new ArgumentException($"{nameof(CodigoTransmissao)} inválido: Campo obrigatório.");
 
             if (string.IsNullOrWhiteSpace(cpfCnpj) || (cpfCnpj.Length > 14))
                 throw new ArgumentException($"{nameof(CpfCnpj)} inválido: Utilize 11 dígitos para CPF ou 14 para CNPJ.");
@@ -52,8 +52,8 @@
             if (string.IsNullOrEmpty(nome) || (nome.Length <= 9 || nome.Length > 100))
                 throw new ArgumentException($"O campo {nameof(Nome)} é inválido, precisa ser pelo menos de 10 a 100 caracteres.");
 
-            if (string.IsNullOrWhiteSpace(observacoes))
-                throw new ArgumentException($"O campo {nameof(Observacoes)} é inválido, campo obrigatório.");
+            //if (string.IsNullOrWhiteSpace(observacoes))
+            //    throw new ArgumentException($"O campo {nameof(Observacoes)} é inválido, campo obrigatório.");
 
             Codigo = codigo;
             CodigoDV = codigoDV;

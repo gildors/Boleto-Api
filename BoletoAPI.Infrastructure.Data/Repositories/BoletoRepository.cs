@@ -159,7 +159,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
             return new Pagador
             {
                 Nome = sacado.Nome,
-                CPFCNPJ = sacado.Cpf,
+                CPFCNPJ = sacado.CpfCnpj,
 
                 Endereco = new Endereco
                 {
