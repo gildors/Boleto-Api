@@ -26,23 +26,23 @@
 
         private void ValidacaoEntidade(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
         {
-            if (string.IsNullOrWhiteSpace(cep) || (cep.Length != 8))
-                throw new ArgumentException($"O campo {nameof(CEP)} deve conter 8 digitos");
+            if (string.IsNullOrWhiteSpace(cep))
+                throw new ArgumentException($"{nameof(CEP)} inválido: Campo obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(logradouro) || (logradouro.Length < 10 || logradouro.Length > 100))
-                throw new ArgumentException($"O campo {nameof(Logradouro)} teve ter no mínimo 10 e no máximo 100 caracteres.");
+            if (string.IsNullOrWhiteSpace(logradouro))
+                throw new ArgumentException($"{nameof(Logradouro)} inválido: Campo obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(numero) || numero.Length > 5)
-                throw new ArgumentException($"O campo {nameof(Numero)} deve conter até 5 digitos.");
+            if (string.IsNullOrWhiteSpace(numero))
+                throw new ArgumentException($" {nameof(Numero)} inválido: Campo obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(bairro) || bairro.Length > 50)
-                throw new ArgumentException($"O campo {nameof(Bairro)} deve ser até 50 caracteres.");
+            if (string.IsNullOrWhiteSpace(bairro))
+                throw new ArgumentException($"{nameof(Bairro)} inválido: Campo obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(cidade) || cidade.Length > 50)
-                throw new ArgumentException($"O campo {nameof(Cidade)} deve ser até 50 caracteres.");
+            if (string.IsNullOrWhiteSpace(cidade))
+                throw new ArgumentException($"{nameof(Cidade)} inválido: Campo obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(estado) || estado.Length != 2)
-                throw new ArgumentException($"O campo {nameof(Estado)} deve conter 2 digitos.");
+            if (string.IsNullOrWhiteSpace(estado))
+                throw new ArgumentException($"{nameof(Estado)} inválido: Campo obrigatório.");
 
             CEP = cep;
             Logradouro = logradouro;

@@ -34,26 +34,17 @@
             if (cpfCnpj != null)
                 cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
 
+            if (string.IsNullOrWhiteSpace(cpfCnpj))
+                throw new ArgumentException($"{nameof(CpfCnpj)} do beneficiario inválido: Campo obrigatório.");
+
             if (string.IsNullOrWhiteSpace(codigo))
-                throw new ArgumentException($"{nameof(Codigo)} inválido: Campo obrigatório.");
+                throw new ArgumentException($"{nameof(Codigo)} do beneficiario inválido: Campo obrigatório.");
 
             if (string.IsNullOrWhiteSpace(codigoDV))
-                throw new ArgumentException($"{nameof(CodigoDV)} inválido: Campo obrigatório.");
+                throw new ArgumentException($"{nameof(CodigoDV)} do beneficiario inválido: Campo obrigatório.");
 
-            //if (string.IsNullOrWhiteSpace(codigoFormatado))
-            //    throw new ArgumentException($"{nameof(CodigoFormatado)} inválido: Campo obrigatório.");
-
-            //if (string.IsNullOrWhiteSpace(codigoTransmissao))
-            //    throw new ArgumentException($"{nameof(CodigoTransmissao)} inválido: Campo obrigatório.");
-
-            if (string.IsNullOrWhiteSpace(cpfCnpj) || (cpfCnpj.Length > 14))
-                throw new ArgumentException($"{nameof(CpfCnpj)} inválido: Utilize 11 dígitos para CPF ou 14 para CNPJ.");
-
-            if (string.IsNullOrEmpty(nome) || (nome.Length <= 9 || nome.Length > 100))
-                throw new ArgumentException($"O campo {nameof(Nome)} é inválido, precisa ser pelo menos de 10 a 100 caracteres.");
-
-            //if (string.IsNullOrWhiteSpace(observacoes))
-            //    throw new ArgumentException($"O campo {nameof(Observacoes)} é inválido, campo obrigatório.");
+            if (string.IsNullOrEmpty(nome))
+                throw new ArgumentException($"{nameof(Nome)} do beneficiario inválido: Campo obrigatório.");
 
             Codigo = codigo;
             CodigoDV = codigoDV;

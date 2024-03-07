@@ -26,13 +26,13 @@
         private void ValidacaoEntidade(string nome, string cpfCnpj)
         {
             if (string.IsNullOrWhiteSpace(nome))
-                throw new ArgumentException($"Campo {nameof(Nome)} é obrigatório");
+                throw new ArgumentException($"{nameof(Nome)} do pagador inválido: Campo obrigatório.");
 
             if (cpfCnpj != null)
                 cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
 
-            if (string.IsNullOrWhiteSpace(cpfCnpj) || (cpfCnpj.Length > 14))
-                throw new ArgumentException($"{nameof(CpfCnpj)} inválido: Utilize 11 dígitos para CPF ou 14 para CNPJ.");
+            if (string.IsNullOrWhiteSpace(cpfCnpj))
+                throw new ArgumentException($"{nameof(CpfCnpj)} do pagador inválido: Campo obrigatório.");
 
             Nome = nome;
             CpfCnpj = cpfCnpj;

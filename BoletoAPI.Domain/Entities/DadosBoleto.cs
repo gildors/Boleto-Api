@@ -42,19 +42,19 @@
                 throw new ArgumentException($"{nameof(NumeroDocumento)} inválido: Campo obrigatório.");
 
             if (vencimento == DateTime.MinValue)
-                throw new ArgumentException($"{nameof(Vencimento)} inválido: Data {vencimento} não esta no formato correto.");
+                throw new ArgumentException($"{nameof(Vencimento)} inválido: Campo obrigatório.");
 
-            if (valor <= 10)
-                throw new ArgumentException($"{nameof(Valor)} deve ser maior do que R$ 10,00.");
+            if (valor <= 0)
+                throw new ArgumentException($"{nameof(Valor)} inválido: Campo obrigatório.");
 
             if (dataEmissao == DateTime.MinValue)
-                throw new ArgumentException($"{nameof(DataEmissao)} inválido: Data {dataEmissao} não esta no formato correto.");
+                throw new ArgumentException($"{nameof(DataEmissao)} inválido: Campo obrigatório.");
 
             if (dataProcessamento == DateTime.MinValue)
-                throw new ArgumentException($"{nameof(DataProcessamento)} inválido: Data {dataProcessamento} não esta no formato correto.");
+                throw new ArgumentException($"{nameof(DataProcessamento)} inválido: Campo obrigatório..");
 
             if (string.IsNullOrWhiteSpace(tipoBanco))
-                throw new ArgumentException($"{nameof(TipoBanco)} inválido, o campo {tipoBanco} é obrigatório.");
+                throw new ArgumentException($"{nameof(TipoBanco)} inválido: Campo obrigatório.");
 
             NossoNumero = nossoNumero;
             Vencimento = vencimento;
