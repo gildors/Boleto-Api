@@ -14,6 +14,8 @@
         public DateTime DataEmissao { get; private set; } = DateTime.MinValue;
         public DateTime DataProcessamento { get; private set; } = DateTime.MinValue;
         public string TipoBanco { get; set; } = string.Empty;
+        public int CodigoProtesto { get; set; } = 0;
+        public int DiasProtesto { get; set; } = 0;
 
         // Propriedades de navegação publica
         public Sacado? Sacado { get; private set; }
@@ -24,16 +26,49 @@
 
         #region Construtores
 
-        public DadosBoleto(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
+        public DadosBoleto(
+            string nossoNumero, 
+            DateTime vencimento, 
+            string numeroDocumento, 
+            decimal valor, 
+            decimal percentualMulta, 
+            decimal percentualJurosDia, 
+            DateTime dataEmissao,
+            DateTime dataProcessamento, 
+            string tipoBanco,
+            int? codigoProtesto,
+            int? diasProtesto)
         {
-            ValidacaoEntidade(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco);
+            ValidacaoEntidade(
+                nossoNumero, 
+                vencimento, 
+                numeroDocumento, 
+                valor, 
+                percentualMulta, 
+                percentualJurosDia, 
+                dataEmissao, 
+                dataProcessamento, 
+                tipoBanco,
+                codigoProtesto,
+                diasProtesto);
         }
 
         #endregion Construtores
 
         #region Métodos
 
-        private void ValidacaoEntidade(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
+        private void ValidacaoEntidade(
+            string nossoNumero, 
+            DateTime vencimento, 
+            string numeroDocumento, 
+            decimal valor, 
+            decimal percentualMulta, 
+            decimal percentualJurosDia, 
+            DateTime dataEmissao, 
+            DateTime dataProcessamento, 
+            string tipoBanco,
+            int? codigoProtesto,
+            int? diasProtesto)
         {
             if (string.IsNullOrEmpty(nossoNumero))
                 throw new ArgumentException($"{nameof(NossoNumero)} inválido: Campo obrigatório.");
@@ -64,6 +99,8 @@
             TipoBanco = tipoBanco;
             PercentualMulta = percentualMulta;
             PercentualJurosDia = percentualJurosDia;
+            CodigoProtesto = codigoProtesto ?? 0;
+            DiasProtesto = diasProtesto ?? 0 ;
         }
 
         #endregion Métodos

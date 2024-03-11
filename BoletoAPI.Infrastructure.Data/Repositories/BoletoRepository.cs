@@ -133,17 +133,18 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 NossoNumero = dadosBoleto.NossoNumero,
                 NumeroDocumento = dadosBoleto.NumeroDocumento,
                 ValorTitulo = dadosBoleto.Valor,
-
-
+                
+                CodigoProtesto = (TipoCodigoProtesto)dadosBoleto.CodigoProtesto,
+                DiasProtesto =  dadosBoleto.DiasProtesto,
                 DataEmissao = dadosBoleto.DataEmissao,
                 DataProcessamento = dadosBoleto.DataProcessamento,
                 DataVencimento = dadosBoleto.Vencimento,
                 
-                DataJuros = dadosBoleto.Vencimento,
+                DataJuros = dadosBoleto.Vencimento.AddDays(1),
                 PercentualJurosDia = dadosBoleto.PercentualJurosDia,
                 TipoJuros = TipoJuros.Simples,
                 
-                DataMulta = dadosBoleto.Vencimento,
+                DataMulta = dadosBoleto.Vencimento.AddDays(1),
                 PercentualMulta = dadosBoleto.PercentualMulta,
                 TipoCodigoMulta = TipoCodigoMulta.Percentual,
 

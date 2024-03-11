@@ -48,6 +48,12 @@ namespace BoletoAPI.Application.Dtos
         [DisplayName("Número Documento")]
         public string NumeroDocumento { get; set; } = string.Empty;
 
+        [DisplayName("Número Documento")]
+        public int CodigoProtesto { get; set; }
+        
+        [DisplayName("Número Documento")]
+        public int DiasProtesto { get; set; } = 0;
+
         #endregion Propriedades
 
         #region Propriedades de navegação
