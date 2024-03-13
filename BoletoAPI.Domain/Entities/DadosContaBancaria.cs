@@ -1,6 +1,6 @@
 ﻿namespace BoletoAPI.Domain.Entities
 {
-    public sealed class ContaBancaria : Base
+    public sealed class DadosContaBancaria : Base
     {
         #region Propriedades
 
@@ -14,7 +14,7 @@
 
         #region Construtores
 
-        public ContaBancaria(string agencia, string conta, string digitoAgencia, string digitoConta, string carteiraPadrao)
+        public DadosContaBancaria(string agencia, string conta, string digitoAgencia, string digitoConta, string carteiraPadrao)
         {
             ValidacaoEntidade(agencia, conta, digitoAgencia, digitoConta, carteiraPadrao);
         }

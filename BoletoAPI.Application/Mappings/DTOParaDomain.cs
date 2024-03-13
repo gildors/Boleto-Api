@@ -22,7 +22,7 @@ namespace BoletoAPI.Application.Mappings
 
             #region Conta Bancária
 
-            CreateMap<ContaBancariaDto, ContaBancaria>();
+            CreateMap<DadosContaBancariaDto, DadosContaBancaria>();
 
             #endregion Conta Bancária
 

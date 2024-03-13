@@ -14,7 +14,7 @@
         public bool MostrarCnpj { get; private set; } = false;
 
         // Propriedade de navegação
-        public ContaBancaria? ContaBancaria { get; private set; }
+        public DadosContaBancaria? ContaBancaria { get; private set; }
 
         #endregion Propriedades
 
@@ -39,9 +39,6 @@
 
             if (string.IsNullOrWhiteSpace(codigo))
                 throw new ArgumentException($"{nameof(Codigo)} do beneficiario inválido: Campo obrigatório.");
-
-            if (string.IsNullOrWhiteSpace(codigoDV))
-                throw new ArgumentException($"{nameof(CodigoDV)} do beneficiario inválido: Campo obrigatório.");
 
             if (string.IsNullOrEmpty(nome))
                 throw new ArgumentException($"{nameof(Nome)} do beneficiario inválido: Campo obrigatório.");

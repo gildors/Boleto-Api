@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BoletoAPI.Application.Dtos
 {
-    public class ContaBancariaDto
+    public class DadosContaBancariaDto
     {
         #region Propriedades
 
@@ -13,22 +13,22 @@ namespace BoletoAPI.Application.Dtos
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Agencia")]
-        public string Agencia { get; set; } = string.Empty;
+        public string? Agencia { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Conta bancária")]
-        public string Conta { get; set; } = string.Empty;        
+        public string? Conta { get; set; } = string.Empty;        
         
         [DisplayName("Dígito Verificador da Agencia")]
-        public string DigitoAgencia { get; set; } = string.Empty;
+        public string? DigitoAgencia { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Digito Verificador da Conta bancária")]
-        public string DigitoConta { get; set; } = string.Empty;
+        public string? DigitoConta { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Carteira padrão")]
-        public string CarteiraPadrao { get; set; } = string.Empty;
+        public string? CarteiraPadrao { get; set; } = string.Empty;
 
         #endregion Propriedades
     }

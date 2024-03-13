@@ -11,11 +11,13 @@ namespace BoletoAPI.Application.Dtos
         [DisplayName("Código")]
         public string Codigo { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Código DV")]
-        public string CodigoDV { get; set; } = string.Empty;
+        public string? CodigoDV { get; set; } = string.Empty;
 
+        [DisplayName("Código Formatado")]
         public string CodigoFormatado { get; set; } = string.Empty;
+        
+        [DisplayName("Código Transmissão")]
         public string CodigoTransmissao { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
@@ -33,7 +35,7 @@ namespace BoletoAPI.Application.Dtos
 
         #region Propriedades de navegação
 
-        public ContaBancariaDto ContaBancaria { get; set; } = new ContaBancariaDto();
+        public DadosContaBancariaDto ContaBancaria { get; set; } = new DadosContaBancariaDto();
 
         #endregion
     }

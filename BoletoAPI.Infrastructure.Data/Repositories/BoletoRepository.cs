@@ -22,13 +22,13 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 
             return boleto?.CodigoBarra.LinhaDigitavel;
         }
-        private Boleto? GerarBoleto(DadosBoleto dadosBoleto)
+        private static Boleto? GerarBoleto(DadosBoleto dadosBoleto)
         {
-            if (dadosBoleto == null || 
-                dadosBoleto.Sacado == null || 
-                dadosBoleto.Sacado.Endereco == null ||
-                dadosBoleto.Beneficiario == null || 
-                dadosBoleto.Beneficiario.ContaBancaria == null)
+            if (dadosBoleto is null || 
+                dadosBoleto.Sacado is null || 
+                dadosBoleto.Sacado.Endereco is null ||
+                dadosBoleto.Beneficiario is null || 
+                dadosBoleto.Beneficiario.ContaBancaria is null)
             {
                 return null;
             }
@@ -106,25 +106,31 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
             }
         }
 
-        private Beneficiario PreencherDadosBeneficiario(DadosBeneficiario beneficiario, Domain.Entities.ContaBancaria contaBancaria)
+        private static Beneficiario PreencherDadosBeneficiario(DadosBeneficiario dadosBeneficiario, DadosContaBancaria dadosContaBancaria)
         {
-            Beneficiario beneficiarioLibNetCore = new Beneficiario();
-
-            beneficiarioLibNetCore.CPFCNPJ = beneficiario.CpfCnpj;
-            beneficiarioLibNetCore.Nome = beneficiario.Nome;
-            beneficiarioLibNetCore.ContaBancaria.Agencia = contaBancaria.Agencia;
-            beneficiarioLibNetCore.ContaBancaria.DigitoAgencia = contaBancaria.DigitoAgencia;
-            beneficiarioLibNetCore.ContaBancaria.Conta = contaBancaria.Conta;
-            beneficiarioLibNetCore.ContaBancaria.DigitoConta = contaBancaria.DigitoConta;
-            beneficiarioLibNetCore.ContaBancaria.CarteiraPadrao = contaBancaria.CarteiraPadrao;
-            beneficiarioLibNetCore.ContaBancaria.TipoCarteiraPadrao = TipoCarteira.CarteiraCobrancaSimples;
-            beneficiarioLibNetCore.ContaBancaria.TipoFormaCadastramento = TipoFormaCadastramento.ComRegistro;
-            beneficiarioLibNetCore.ContaBancaria.TipoImpressaoBoleto = TipoImpressaoBoleto.Empresa;
-
-            return beneficiarioLibNetCore;
+            return new Beneficiario() 
+            {
+                CPFCNPJ = dadosBeneficiario.CpfCnpj,
+                Nome = dadosBeneficiario.Nome,
+                Codigo = dadosBeneficiario.Codigo,
+                CodigoDV = dadosBeneficiario.CodigoDV,
+                CodigoTransmissao = dadosBeneficiario.CodigoTransmissao,
+                CodigoFormatado = dadosBeneficiario.CodigoFormatado,
+                ContaBancaria = new ContaBancaria()
+                {
+                    Agencia = dadosContaBancaria.Agencia,
+                    DigitoAgencia = dadosContaBancaria.DigitoAgencia,
+                    Conta = dadosContaBancaria.Conta,
+                    DigitoConta = dadosContaBancaria.DigitoConta,
+                    CarteiraPadrao = dadosContaBancaria.CarteiraPadrao,
+                    TipoCarteiraPadrao = TipoCarteira.CarteiraCobrancaSimples,
+                    TipoFormaCadastramento = TipoFormaCadastramento.ComRegistro,
+                    TipoImpressaoBoleto = TipoImpressaoBoleto.Empresa,
+                }
+            };
         }
 
-        private Boleto GerarLayoutBoleto(IBanco banco, DadosBoleto dadosBoleto, Sacado sacado, DadosEndereco endereco)
+        private static Boleto GerarLayoutBoleto(IBanco banco, DadosBoleto dadosBoleto, Sacado sacado, DadosEndereco endereco)
         {
             var boleto = new Boleto(banco)
             {
