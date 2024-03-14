@@ -20,7 +20,7 @@
 
         #region Contrutores
 
-        public DadosBeneficiario(string codigo, string codigoDV, string codigoFormatado, string codigoTransmissao, string cpfCnpj, string nome, string observacoes)
+        public DadosBeneficiario(string? codigo, string? codigoDV, string? codigoFormatado, string? codigoTransmissao, string? cpfCnpj, string? nome, string? observacoes)
         {
             ValidacaoEntidade(codigo, codigoDV, codigoFormatado, codigoTransmissao, cpfCnpj, nome, observacoes);
         }
@@ -29,7 +29,7 @@
 
         #region Metodos
 
-        private void ValidacaoEntidade(string codigo, string codigoDV, string codigoFormatado, string codigoTransmissao, string cpfCnpj, string nome, string observacoes)
+        private void ValidacaoEntidade(string? codigo, string? codigoDV, string? codigoFormatado, string? codigoTransmissao, string? cpfCnpj, string? nome, string? observacoes)
         {
             if (cpfCnpj != null)
                 cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
@@ -44,12 +44,12 @@
                 throw new ArgumentException($"{nameof(Nome)} do beneficiario inválido: Campo obrigatório.");
 
             Codigo = codigo;
-            CodigoDV = codigoDV;
-            CodigoFormatado = codigoFormatado;
-            CodigoTransmissao = codigoTransmissao;
+            CodigoDV = codigoDV ?? "";
+            CodigoFormatado = codigoFormatado ?? "";
+            CodigoTransmissao = codigoTransmissao ?? "";
             CpfCnpj = cpfCnpj;
             Nome = nome;
-            Observacoes = observacoes;
+            Observacoes = observacoes ?? "";
         }
 
         #endregion Metodos

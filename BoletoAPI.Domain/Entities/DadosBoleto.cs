@@ -27,15 +27,15 @@
         #region Construtores
 
         public DadosBoleto(
-            string nossoNumero, 
-            DateTime vencimento, 
-            string numeroDocumento, 
-            decimal valor, 
-            decimal percentualMulta, 
-            decimal percentualJurosDia, 
-            DateTime dataEmissao,
-            DateTime dataProcessamento, 
-            string tipoBanco,
+            string? nossoNumero, 
+            DateTime? vencimento, 
+            string? numeroDocumento, 
+            decimal? valor, 
+            decimal? percentualMulta, 
+            decimal? percentualJurosDia, 
+            DateTime? dataEmissao,
+            DateTime? dataProcessamento, 
+            string? tipoBanco,
             int? codigoProtesto,
             int? diasProtesto)
         {
@@ -58,15 +58,15 @@
         #region Métodos
 
         private void ValidacaoEntidade(
-            string nossoNumero, 
-            DateTime vencimento, 
-            string numeroDocumento, 
-            decimal valor, 
-            decimal percentualMulta, 
-            decimal percentualJurosDia, 
-            DateTime dataEmissao, 
-            DateTime dataProcessamento, 
-            string tipoBanco,
+            string? nossoNumero, 
+            DateTime? vencimento, 
+            string? numeroDocumento, 
+            decimal? valor, 
+            decimal? percentualMulta, 
+            decimal? percentualJurosDia, 
+            DateTime? dataEmissao, 
+            DateTime? dataProcessamento, 
+            string? tipoBanco,
             int? codigoProtesto,
             int? diasProtesto)
         {
@@ -76,13 +76,13 @@
             if (string.IsNullOrEmpty(numeroDocumento))
                 throw new ArgumentException($"{nameof(NumeroDocumento)} inválido: Campo obrigatório.");
 
-            if (vencimento == DateTime.MinValue)
+            if (vencimento == null || vencimento == DateTime.MinValue)
                 throw new ArgumentException($"{nameof(Vencimento)} inválido: Campo obrigatório.");
 
-            if (valor <= 0)
+            if (valor == null || valor <= 0)
                 throw new ArgumentException($"{nameof(Valor)} inválido: Campo obrigatório.");
 
-            if (dataEmissao == DateTime.MinValue)
+            if (dataEmissao == null || dataEmissao == DateTime.MinValue)
                 throw new ArgumentException($"{nameof(DataEmissao)} inválido: Campo obrigatório.");
 
             if (dataProcessamento == DateTime.MinValue)
@@ -92,13 +92,13 @@
                 throw new ArgumentException($"{nameof(TipoBanco)} inválido: Campo obrigatório.");
 
             NossoNumero = nossoNumero;
-            Vencimento = vencimento;
-            NumeroDocumento = numeroDocumento;
-            Valor = valor;
-            DataEmissao = dataEmissao;
             TipoBanco = tipoBanco;
-            PercentualMulta = percentualMulta;
-            PercentualJurosDia = percentualJurosDia;
+            Vencimento = vencimento.Value;
+            NumeroDocumento = numeroDocumento;
+            Valor = valor.Value;
+            DataEmissao = dataEmissao.Value;
+            PercentualMulta = percentualMulta ?? 0;
+            PercentualJurosDia = percentualJurosDia ?? 0;
             CodigoProtesto = codigoProtesto ?? 0;
             DiasProtesto = diasProtesto ?? 0 ;
         }

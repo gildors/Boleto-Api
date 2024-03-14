@@ -23,7 +23,7 @@
 
         #region Métodos
 
-        private void ValidacaoEntidade(string agencia, string conta, string digitoAgencia, string digitoConta, string carteiraPadrao)
+        private void ValidacaoEntidade(string? agencia, string? conta, string? digitoAgencia, string? digitoConta, string? carteiraPadrao)
         {
             if (string.IsNullOrEmpty(agencia) || (agencia.Length < 4 || agencia.Length > 5))
                 throw new ArgumentException($"{nameof(Agencia)} inválida: O campo deve ter um tamanho de 4 a 5 digitos.");
@@ -39,7 +39,7 @@
 
 
             Agencia = agencia;
-            DigitoAgencia = digitoAgencia;
+            DigitoAgencia = digitoAgencia ?? "";
             Conta = conta;
             DigitoConta = digitoConta;
             CarteiraPadrao = carteiraPadrao;

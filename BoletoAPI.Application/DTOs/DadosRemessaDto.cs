@@ -17,7 +17,7 @@ namespace BoletoAPI.Application.Dtos
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Banco")]
-        public string TipoBanco { get; set; } = string.Empty;
+        public string? TipoBanco { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Tipo Arquivo")]

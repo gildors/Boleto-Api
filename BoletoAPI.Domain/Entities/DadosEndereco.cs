@@ -15,7 +15,7 @@
 
         #region Contrutores
 
-        public DadosEndereco(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
+        public DadosEndereco(string? cep, string? logradouro, string? numero, string? bairro, string? cidade, string? estado)
         {
             ValidacaoEntidade(cep, logradouro, numero, bairro, cidade, estado);
         }
@@ -24,7 +24,7 @@
 
         #region Métodos
 
-        private void ValidacaoEntidade(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
+        private void ValidacaoEntidade(string? cep, string? logradouro, string? numero, string? bairro, string? cidade, string? estado)
         {
             if (string.IsNullOrWhiteSpace(cep))
                 throw new ArgumentException($"{nameof(CEP)} inválido: Campo obrigatório.");

@@ -10,11 +10,11 @@ namespace BoletoAPI.Application.Dtos
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Nosso Número")]
-        public string NossoNumero { get; set; } = string.Empty;
+        public string? NossoNumero { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data de vencimento")]
-        public DateTime Vencimento { get; set; } = DateTime.MinValue;
+        public DateTime? Vencimento { get; set; } = DateTime.MinValue;
 
         [DisplayName("Campo Livre")]
         public string? CampoLivre { get; set; }
@@ -24,35 +24,35 @@ namespace BoletoAPI.Application.Dtos
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
         [DisplayName("Valor")]
-        public decimal Valor { get; set; } = decimal.Zero;
+        public decimal? Valor { get; set; } = decimal.Zero;
 
         [DisplayName("Percentual Juros por Dia")]
-        public decimal PercentualJurosDia { get; set; } = decimal.Zero;
+        public decimal? PercentualJurosDia { get; set; } = decimal.Zero;
 
         [DisplayName("Percentual de Multa")]
-        public decimal PercentualMulta { get; set; } = decimal.Zero;
+        public decimal? PercentualMulta { get; set; } = decimal.Zero;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Emissão")]
-        public DateTime DataEmissao { get; set; } = DateTime.MinValue;
+        public DateTime? DataEmissao { get; set; } = DateTime.MinValue;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Processamento")]
-        public DateTime DataProcessamento { get; set; } = DateTime.MinValue;
+        public DateTime? DataProcessamento { get; set; } = DateTime.MinValue;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Banco")]
-        public string TipoBanco { get; set; } = string.Empty;
+        public string? TipoBanco { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Número Documento")]
-        public string NumeroDocumento { get; set; } = string.Empty;
+        public string? NumeroDocumento { get; set; } = string.Empty;
 
         [DisplayName("Número Documento")]
-        public int CodigoProtesto { get; set; }
+        public int? CodigoProtesto { get; set; }
         
         [DisplayName("Número Documento")]
-        public int DiasProtesto { get; set; } = 0;
+        public int? DiasProtesto { get; set; } = 0;
 
         #endregion Propriedades
 

@@ -27,16 +27,16 @@ namespace BoletoAPI.Domain.Entities
 
         #region Métodos
 
-        private void ValidacaoEntidade(List<DadosBoleto> dadosBoletos, string tipoBanco, TipoArquivo tipoArquivo, int numeroArquivoRemessa, int? numeroArquivoRemessaNoDia)
+        private void ValidacaoEntidade(List<DadosBoleto>? dadosBoletos, string? tipoBanco, TipoArquivo? tipoArquivo, int? numeroArquivoRemessa, int? numeroArquivoRemessaNoDia)
         {
 
-            if (numeroArquivoRemessa == 0)
+            if (numeroArquivoRemessa == null || numeroArquivoRemessa == 0)
                 throw new ArgumentException($"{nameof(NumeroArquivoRemessa)} inválido, o campo é obrigatório.");
 
             if (dadosBoletos == null || dadosBoletos.Count == 0)
                 throw new ArgumentException($"{nameof(DadosBoletos)} inválido, o campo é obrigatório.");
 
-            if (!System.Enum.IsDefined(typeof(TipoArquivo), tipoArquivo))
+            if (tipoArquivo != null || !System.Enum.IsDefined(typeof(TipoArquivo), tipoArquivo))
                 throw new ArgumentException($"{nameof(TipoArquivo)} inválido, o campo é obrigatório.");
 
             if (string.IsNullOrEmpty(tipoBanco))
@@ -44,8 +44,8 @@ namespace BoletoAPI.Domain.Entities
 
             TipoBanco = tipoBanco;
             DadosBoletos = dadosBoletos;
-            TipoArquivo = tipoArquivo;
-            NumeroArquivoRemessa = numeroArquivoRemessa;
+            TipoArquivo = tipoArquivo.Value;
+            NumeroArquivoRemessa = numeroArquivoRemessa.Value;
             NumeroArquivoRemessaNoDia = numeroArquivoRemessaNoDia;
         }
 

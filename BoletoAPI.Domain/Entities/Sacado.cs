@@ -23,16 +23,15 @@
 
         #region Métodos
 
-        private void ValidacaoEntidade(string nome, string cpfCnpj)
+        private void ValidacaoEntidade(string? nome, string? cpfCnpj)
         {
             if (string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentException($"{nameof(Nome)} do pagador inválido: Campo obrigatório.");
 
-            if (cpfCnpj != null)
-                cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
-
-            if (string.IsNullOrWhiteSpace(cpfCnpj))
+            if (string.IsNullOrEmpty(cpfCnpj))
                 throw new ArgumentException($"{nameof(CpfCnpj)} do pagador inválido: Campo obrigatório.");
+            else
+                cpfCnpj = cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
 
             Nome = nome;
             CpfCnpj = cpfCnpj;
