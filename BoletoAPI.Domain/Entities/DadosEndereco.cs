@@ -33,7 +33,7 @@
                 throw new ArgumentException($"{nameof(Logradouro)} inválido: Campo obrigatório.");
 
             if (string.IsNullOrWhiteSpace(numero))
-                throw new ArgumentException($" {nameof(Numero)} inválido: Campo obrigatório.");
+                throw new ArgumentException($"{nameof(Numero)} inválido: Campo obrigatório.");
 
             if (string.IsNullOrWhiteSpace(bairro))
                 throw new ArgumentException($"{nameof(Bairro)} inválido: Campo obrigatório.");

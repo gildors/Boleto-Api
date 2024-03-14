@@ -40,7 +40,7 @@ namespace BoletoAPI.Domain.Tests
             vencimento = DateTime.MinValue;
 
             Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
-            action.Should().Throw<ArgumentException>().WithMessage($"Vencimento inválido: Data {vencimento} não esta no formato correto.");
+            action.Should().Throw<ArgumentException>().WithMessage($"Vencimento inválido: Campo obrigatório.");
         }
 
         [InlineData("4316", "2023-08-12", "138", 0.00, 2, 0.5, "2023-08-12", "2023-08-12", "Itau", 0, 0)]
@@ -48,7 +48,7 @@ namespace BoletoAPI.Domain.Tests
         public void ConstrutorBoleto_PassarValorMenorQue10_RetornaException(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco, int? codigoProtesto, int? diasProtesto)
         {
             Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
-            action.Should().Throw<ArgumentException>().WithMessage($"Valor deve ser maior do que R$ 10,00.");
+            action.Should().Throw<ArgumentException>().WithMessage($"Valor inválido: Campo obrigatório.");
         }
 
         [InlineData("4316", "2023-08-12", "109", 20.00, 2, 0.5, "2023-08-12", "2023-08-12", "Itau", 0, 0)]
@@ -58,7 +58,7 @@ namespace BoletoAPI.Domain.Tests
             dataEmissao = DateTime.MinValue;
 
             Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
-            action.Should().Throw<ArgumentException>().WithMessage($"DataEmissao inválido: Data {dataEmissao} não esta no formato correto.");
+            action.Should().Throw<ArgumentException>().WithMessage($"DataEmissao inválido: Campo obrigatório.");
         }
 
         [InlineData("4316", "2023-08-12", "109", 20.00, 2, 0.5, "2023-08-12", "2023-08-12", "Itau", 0, 0)]
@@ -68,7 +68,7 @@ namespace BoletoAPI.Domain.Tests
             dataProcessamento = DateTime.MinValue;
 
             Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
-            action.Should().Throw<ArgumentException>().WithMessage($"DataProcessamento inválido: Data {dataProcessamento} não esta no formato correto.");
+            action.Should().Throw<ArgumentException>().WithMessage($"DataProcessamento inválido: Campo obrigatório.");
         }
 
         [InlineData("4316", "2023-08-12", "109", 20.00, 2, 0.5, "2023-08-12", "2023-08-12", "", 0, 0)]
@@ -78,7 +78,7 @@ namespace BoletoAPI.Domain.Tests
         public void ContrutorBoleto_PassarTipoBancoInvalido_RetornaException(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco, int? codigoProtesto, int? diasProtesto)
         {
             Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
-            action.Should().Throw<ArgumentException>().WithMessage($"TipoBanco inválido, o campo {tipoBanco} é obrigatório.");
+            action.Should().Throw<ArgumentException>().WithMessage($"TipoBanco inválido: Campo obrigatório.");
         }
     }
 }

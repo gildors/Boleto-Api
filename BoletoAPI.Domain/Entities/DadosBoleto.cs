@@ -86,7 +86,7 @@
                 throw new ArgumentException($"{nameof(DataEmissao)} inválido: Campo obrigatório.");
 
             if (dataProcessamento == DateTime.MinValue)
-                throw new ArgumentException($"{nameof(DataProcessamento)} inválido: Campo obrigatório..");
+                throw new ArgumentException($"{nameof(DataProcessamento)} inválido: Campo obrigatório.");
 
             if (string.IsNullOrWhiteSpace(tipoBanco))
                 throw new ArgumentException($"{nameof(TipoBanco)} inválido: Campo obrigatório.");

@@ -31,17 +31,16 @@
 
         private void ValidacaoEntidade(string? codigo, string? codigoDV, string? codigoFormatado, string? codigoTransmissao, string? cpfCnpj, string? nome, string? observacoes)
         {
-            if (cpfCnpj != null)
-                cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
-
-            if (string.IsNullOrWhiteSpace(cpfCnpj))
-                throw new ArgumentException($"{nameof(CpfCnpj)} do beneficiario inválido: Campo obrigatório.");
-
-            if (string.IsNullOrWhiteSpace(codigo))
-                throw new ArgumentException($"{nameof(Codigo)} do beneficiario inválido: Campo obrigatório.");
-
             if (string.IsNullOrEmpty(nome))
                 throw new ArgumentException($"{nameof(Nome)} do beneficiario inválido: Campo obrigatório.");
+
+            if (string.IsNullOrEmpty(cpfCnpj))
+                throw new ArgumentException($"{nameof(CpfCnpj)} do beneficiario inválido: Campo obrigatório.");
+            else
+                cpfCnpj = cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
+
+            if (string.IsNullOrEmpty(codigo))
+                throw new ArgumentException($"{nameof(Codigo)} do beneficiario inválido: Campo obrigatório.");
 
             Codigo = codigo;
             CodigoDV = codigoDV ?? "";

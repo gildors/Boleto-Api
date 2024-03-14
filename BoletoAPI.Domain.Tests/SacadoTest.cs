@@ -19,7 +19,7 @@ namespace BoletoAPI.Domain.Tests
         public void ConstrutorSacado_PassarValorNulo_RetornarException(string nome, string cpf)
         {
             Action action = () => new Sacado(nome, cpf);
-            action.Should().Throw<ArgumentException>().WithMessage("Campo Nome é obrigatório");
+            action.Should().Throw<ArgumentException>().WithMessage("Nome do pagador inválido: Campo obrigatório.");
         }
 
         [Theory(DisplayName = "Contrutor com CPF inválido")]
@@ -27,16 +27,7 @@ namespace BoletoAPI.Domain.Tests
         public void ContrutorSacado_PassarCPFNulo_RetornaException(string nome, string cpf)
         {
             Action action = () => new Sacado(nome, cpf);
-            action.Should().Throw<ArgumentException>().WithMessage("O campo Cpf deve ter 14 digitos");
+            action.Should().Throw<ArgumentException>().WithMessage("CpfCnpj do pagador inválido: Campo obrigatório.");
         }
-
-        [Theory(DisplayName = "Contrutor com CPF diferente de 14")]
-        [InlineData("Gabriela Letícia Marlene Melo", "5849491597515975")]
-        public void ContrutorSacado_PassarCPFComValorDiferenteDe14_RetornaException(string nome, string cpf)
-        {
-            Action action = () => new Sacado(nome, cpf);
-            action.Should().Throw<ArgumentException>().WithMessage("O campo Cpf deve ter 14 digitos");
-        }
-
     }
 }

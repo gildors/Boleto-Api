@@ -25,7 +25,7 @@
 
         private void ValidacaoEntidade(string? nome, string? cpfCnpj)
         {
-            if (string.IsNullOrWhiteSpace(nome))
+            if (string.IsNullOrEmpty(nome))
                 throw new ArgumentException($"{nameof(Nome)} do pagador inválido: Campo obrigatório.");
 
             if (string.IsNullOrEmpty(cpfCnpj))

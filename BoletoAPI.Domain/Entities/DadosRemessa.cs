@@ -36,7 +36,7 @@ namespace BoletoAPI.Domain.Entities
             if (dadosBoletos == null || dadosBoletos.Count == 0)
                 throw new ArgumentException($"{nameof(DadosBoletos)} inválido, o campo é obrigatório.");
 
-            if (tipoArquivo != null || !System.Enum.IsDefined(typeof(TipoArquivo), tipoArquivo))
+            if (tipoArquivo == null || !System.Enum.IsDefined(typeof(TipoArquivo), tipoArquivo))
                 throw new ArgumentException($"{nameof(TipoArquivo)} inválido, o campo é obrigatório.");
 
             if (string.IsNullOrEmpty(tipoBanco))
