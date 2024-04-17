@@ -8,5 +8,6 @@ namespace BoletoAPI.Domain.Interfaces
         string? RetornarLinhaDigitavel(DadosBoleto dadosBoleto);
         string? RetornarHTML(DadosBoleto dadosBoleto);
         string? RetornarRemessa(DadosRemessa dadosRemessa);
+        string? RetornarArquivoRetorno(DadosRetorno dadosRetorno);
     }
 }

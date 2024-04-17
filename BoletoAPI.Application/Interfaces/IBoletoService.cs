@@ -7,5 +7,6 @@ namespace BoletoAPI.Application.Interfaces
         string? GerarHTMLBoleto(DadosBoletoDto dadosBoletoDto);
         string? GerarLinhaDigitavelBoleto(DadosBoletoDto dadosBoletoDto);
         string? GerarArquivoRemessa(DadosRemessaDto dadosRemessaDto);
+        string? ProcessarArquivoRetorno(DadosRetornoDto dadosRetornoDto);
     }
 }

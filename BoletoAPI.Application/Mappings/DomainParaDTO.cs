@@ -42,7 +42,13 @@ namespace BoletoAPI.Application.Mappings
 
             CreateMap<DadosRemessa, DadosRemessaDto>();
 
-            #endregion Dados da Remessa
+            #endregion Dados da Remessa            
+            
+            #region Dados do Retorno
+
+            CreateMap<DadosRetorno, DadosRetornoDto>();
+
+            #endregion Dados do Retorno
         }
     }
 }

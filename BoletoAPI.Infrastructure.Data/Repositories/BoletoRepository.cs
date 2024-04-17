@@ -213,5 +213,34 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 
             return GerarRemessa(_banco, boletos, (TipoArquivo)dadosRemessa.TipoArquivo, dadosRemessa.NumeroArquivoRemessa, dadosRemessa.NumeroArquivoRemessaNoDia);
         }
+
+        public string? RetornarArquivoRetorno(DadosRetorno dadosRetorno)
+        {
+            IBanco _banco = ObterTipoBanco(dadosRetorno.TipoBanco);
+
+            if(dadosRetorno.ArquivoRetorno is null)
+            {
+                return null;
+            }
+
+            var boletos = ProcessarRetorno(_banco, (TipoArquivo)dadosRetorno.TipoArquivo, dadosRetorno.ArquivoRetorno.OpenReadStream());
+
+            var serializerSettings = new Newtonsoft.Json.JsonSerializerSettings
+            {
+                ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
+            };
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(boletos, serializerSettings);
+
+            return json;
+        }
+
+        private static Boletos ProcessarRetorno(IBanco banco, TipoArquivo tipoArquivo, Stream conteudoArquivoRetorno) 
+        {
+            ArquivoRetorno arquivoRetorno = new ArquivoRetorno(banco, tipoArquivo);
+
+            var boletos = arquivoRetorno.LerArquivoRetorno(conteudoArquivoRetorno);
+
+            return boletos;
+        }
     }
 }

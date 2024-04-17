@@ -8,7 +8,7 @@ namespace BoletoAPI.Application.Services
 {
     public class BoletoService : IBoletoService
     {
-        private IBoletoRepository _iBoletoRepository;
+        private readonly IBoletoRepository _iBoletoRepository;
         private readonly IMapper _mapper;
 
         public BoletoService(IBoletoRepository iBoletoRepository, IMapper mapper)
@@ -32,6 +32,11 @@ namespace BoletoAPI.Application.Services
         {
             var mapearRemessa = _mapper.Map<DadosRemessa>(dadosRemessaDto);
             return _iBoletoRepository.RetornarRemessa(mapearRemessa);
+        }
+        public string? ProcessarArquivoRetorno(DadosRetornoDto dadosRetornoDto)
+        {
+            var mapearRetorno = _mapper.Map<DadosRetorno>(dadosRetornoDto);
+            return _iBoletoRepository.RetornarArquivoRetorno(mapearRetorno);
         }
     }
 }

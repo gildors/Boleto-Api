@@ -68,5 +68,24 @@ namespace BoletoAPI.Apresentation.WebAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+        [ProducesResponseType(typeof(DadosRetornoDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [HttpPost]
+        [Route("processarRetorno")]
+        public IActionResult ProcessReturno([FromForm] DadosRetornoDto dadosRetornoDto)
+        {
+            try
+            {
+                var gerarArquivoRemessa = _boletoService.ProcessarArquivoRetorno(dadosRetornoDto);
+                return Ok(gerarArquivoRemessa);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
