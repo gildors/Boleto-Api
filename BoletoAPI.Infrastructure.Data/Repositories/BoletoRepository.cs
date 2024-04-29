@@ -140,7 +140,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 NumeroDocumento = dadosBoleto.NumeroDocumento,
                 ValorTitulo = dadosBoleto.Valor,
                 MensagemInstrucoesCaixa = "tesde de menssagem ao banco meu amigo",
-                
+                MensagemInstrucoesCaixaFormatado = "teste de menssagem ao banco formatado",
                 CodigoProtesto = (TipoCodigoProtesto)dadosBoleto.CodigoProtesto,
                 DiasProtesto =  dadosBoleto.DiasProtesto,
                 DataEmissao = dadosBoleto.DataEmissao,
