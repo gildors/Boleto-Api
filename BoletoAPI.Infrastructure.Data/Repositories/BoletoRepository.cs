@@ -141,23 +141,23 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 ValorTitulo = dadosBoleto.Valor,
                 MensagemInstrucoesCaixa = dadosBoleto.MensagemInstrucoesCaixa,
                 ImprimirMensagemInstrucao = true,
-                CodigoInstrucao1 = "0001",
                 CodigoProtesto = (TipoCodigoProtesto)dadosBoleto.CodigoProtesto,
                 DiasProtesto =  dadosBoleto.DiasProtesto,
                 DataEmissao = dadosBoleto.DataEmissao,
                 DataProcessamento = dadosBoleto.DataProcessamento,
                 DataVencimento = dadosBoleto.Vencimento,
-                
                 DataJuros = dadosBoleto.Vencimento.AddDays(1),
                 PercentualJurosDia = dadosBoleto.PercentualJurosDia,
                 TipoJuros = TipoJuros.Simples,
-                
                 DataMulta = dadosBoleto.Vencimento.AddDays(1),
                 PercentualMulta = dadosBoleto.PercentualMulta,
                 TipoCodigoMulta = TipoCodigoMulta.Percentual,
 
                 Pagador = DadosSacado(sacado, endereco),
             };
+            
+            
+           
 
             boleto.ValidarDados();
             return boleto;
