@@ -53,6 +53,8 @@ namespace BoletoAPI.Application.Dtos
         
         [DisplayName("Número Documento")]
         public int? DiasProtesto { get; set; } = 0;
+        
+       public string MensagemInstrucoesCaixa { get; set; }= string.Empty;
 
         #endregion Propriedades
 

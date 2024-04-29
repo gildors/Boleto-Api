@@ -5,6 +5,7 @@
         #region Propriedades
 
         public string NossoNumero { get; private set; } = string.Empty;
+        public string MensagemInstrucoesCaixa { get; private set; } = string.Empty;
         public DateTime Vencimento { get; private set; } = DateTime.MinValue;
         public string NumeroDocumento { get; private set; } = string.Empty;
         public string? CampoLivre { get; private set; }
