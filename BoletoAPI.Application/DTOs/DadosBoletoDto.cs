@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BoletoNetCore;
+using BoletoNetCore.Enums;
 
 namespace BoletoAPI.Application.Dtos
 {
@@ -25,12 +27,23 @@ namespace BoletoAPI.Application.Dtos
         [DataType(DataType.Currency)]
         [DisplayName("Valor")]
         public decimal? Valor { get; set; } = decimal.Zero;
+        
+        [DisplayName("Tipo do Juros")]
+        public TipoJuros? TipoJuros { get; set; } = BoletoNetCore.TipoJuros.Simples;
 
+        [DisplayName("Tipo do Juros")] public DateTime DataJuros { get; set; } = DateTime.MinValue;
+        
         [DisplayName("Percentual Juros por Dia")]
         public decimal? PercentualJurosDia { get; set; } = decimal.Zero;
-
+        
         [DisplayName("Percentual de Multa")]
         public decimal? PercentualMulta { get; set; } = decimal.Zero;
+
+        [DisplayName("Tipo Multaa")]
+        public TipoCodigoMulta TipoCodigoMulta { get; set; } = BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
+        
+        [DisplayName("Data Multa")]
+        public DateTime DataMulta { get; set; } = DateTime.MinValue;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Emissão")]

@@ -11,7 +11,7 @@ namespace BoletoAPI.Domain.Tests
         [InlineData("4316", "2023-08-12", "109", 20.00, 2, 0.5, "2023-08-12", "2023-08-12", "Itau", 0, 0)]
         public void ConstrutorBoleto_PassarDadosValidos_RetornaSucesso(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco, int? codigoProtesto, int? diasProtesto)
         {
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().NotThrow();
         }
 
@@ -20,7 +20,7 @@ namespace BoletoAPI.Domain.Tests
         [Theory(DisplayName = "Dados do boleto nulo ou vazio")]
         public void ConstrutorBoleto_PassarNossoNumeroNuloOuVazio_RetornaException(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco, int? codigoProtesto, int? diasProtesto)
         {
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+                       Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().Throw<ArgumentException>().WithMessage("NossoNumero inválido: Campo obrigatório.");
         }
 
@@ -29,7 +29,7 @@ namespace BoletoAPI.Domain.Tests
         [Theory(DisplayName = "Dados do boleto nulo ou vazio")]
         public void ConstrutorBoleto_PassarNumeroDocumentoNuloOuVazio_RetornaException(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco, int? codigoProtesto, int? diasProtesto)
         {
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+                       Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().Throw<ArgumentException>().WithMessage("NumeroDocumento inválido: Campo obrigatório.");
         }
 
@@ -39,7 +39,7 @@ namespace BoletoAPI.Domain.Tests
         {
             vencimento = DateTime.MinValue;
 
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+                       Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().Throw<ArgumentException>().WithMessage($"Vencimento inválido: Campo obrigatório.");
         }
 
@@ -47,7 +47,7 @@ namespace BoletoAPI.Domain.Tests
         [Theory(DisplayName = "Dados do boleto com valor menor que 10 ")]
         public void ConstrutorBoleto_PassarValorMenorQue10_RetornaException(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco, int? codigoProtesto, int? diasProtesto)
         {
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+                       Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().Throw<ArgumentException>().WithMessage($"Valor inválido: Campo obrigatório.");
         }
 
@@ -57,7 +57,7 @@ namespace BoletoAPI.Domain.Tests
         {
             dataEmissao = DateTime.MinValue;
 
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+                       Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().Throw<ArgumentException>().WithMessage($"DataEmissao inválido: Campo obrigatório.");
         }
 
@@ -67,7 +67,7 @@ namespace BoletoAPI.Domain.Tests
         {
             dataProcessamento = DateTime.MinValue;
 
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+                       Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().Throw<ArgumentException>().WithMessage($"DataProcessamento inválido: Campo obrigatório.");
         }
 
@@ -77,7 +77,7 @@ namespace BoletoAPI.Domain.Tests
         [Theory(DisplayName = "Dados do boleto inválido, data emissão inválida")]
         public void ContrutorBoleto_PassarTipoBancoInvalido_RetornaException(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, decimal percentualMulta, decimal percentualJurosDia, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco, int? codigoProtesto, int? diasProtesto)
         {
-            Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto);
+                       Action action = () => new DadosBoleto(nossoNumero, vencimento, numeroDocumento, valor, percentualMulta, percentualJurosDia, dataEmissao, dataProcessamento, tipoBanco, codigoProtesto, diasProtesto, null, null, null, null);
             action.Should().Throw<ArgumentException>().WithMessage($"TipoBanco inválido: Campo obrigatório.");
         }
     }

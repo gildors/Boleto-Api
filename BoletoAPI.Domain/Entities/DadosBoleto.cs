@@ -1,4 +1,7 @@
-﻿namespace BoletoAPI.Domain.Entities
+﻿using BoletoNetCore;
+using BoletoNetCore.Enums;
+
+namespace BoletoAPI.Domain.Entities
 {
     public sealed class DadosBoleto : Base
     {
@@ -11,12 +14,18 @@
         public string? CampoLivre { get; private set; }
         public decimal Valor { get; private set; } = decimal.Zero;
         public decimal PercentualMulta { get; private set; } = decimal.Zero;
+        public TipoCodigoMulta? TipoCodigoMulta { get; set; } = BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
+        public DateTime? DataMulta { get; set; } = DateTime.MinValue;
         public decimal PercentualJurosDia { get; private set; } = decimal.Zero;
+        public DateTime? DataJuros { get; set; } = DateTime.MinValue;
+        public TipoJuros? TipoJuros { get; set; } = BoletoNetCore.TipoJuros.Simples;
+        
         public DateTime DataEmissao { get; private set; } = DateTime.MinValue;
         public DateTime DataProcessamento { get; private set; } = DateTime.MinValue;
         public string TipoBanco { get; set; } = string.Empty;
         public int CodigoProtesto { get; set; } = 0;
         public int DiasProtesto { get; set; } = 0;
+        
 
         // Propriedades de navegação publica
         public Sacado? Sacado { get; private set; }
@@ -38,7 +47,11 @@
             DateTime? dataProcessamento, 
             string? tipoBanco,
             int? codigoProtesto,
-            int? diasProtesto)
+            int? diasProtesto,
+            DateTime? dataMulta,
+            DateTime? dataJuros,
+            TipoJuros? tipoJuros,
+            TipoCodigoMulta? tipoCodigoMulta)
         {
             ValidacaoEntidade(
                 nossoNumero, 
@@ -51,7 +64,11 @@
                 dataProcessamento, 
                 tipoBanco,
                 codigoProtesto,
-                diasProtesto);
+                diasProtesto,
+                dataJuros,
+                dataMulta,
+                tipoCodigoMulta,
+                tipoJuros);
         }
 
         #endregion Construtores
@@ -69,7 +86,12 @@
             DateTime? dataProcessamento, 
             string? tipoBanco,
             int? codigoProtesto,
-            int? diasProtesto)
+            int? diasProtesto,
+            DateTime? dataMulta,
+            DateTime? dataJuros,
+            TipoCodigoMulta? tipoCodigoMulta,
+            TipoJuros? tipoJuros
+           )
         {
             if (string.IsNullOrEmpty(nossoNumero))
                 throw new ArgumentException($"{nameof(NossoNumero)} inválido: Campo obrigatório.");
@@ -99,6 +121,8 @@
             Valor = valor.Value;
             DataEmissao = dataEmissao.Value;
             PercentualMulta = percentualMulta ?? 0;
+            TipoJuros = tipoJuros ?? BoletoNetCore.TipoJuros.Simples;
+            TipoCodigoMulta = tipoCodigoMulta ?? BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
             PercentualJurosDia = percentualJurosDia ?? 0;
             CodigoProtesto = codigoProtesto ?? 0;
             DiasProtesto = diasProtesto ?? 0 ;
