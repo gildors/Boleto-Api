@@ -154,6 +154,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 DataMulta = dadosBoleto.Vencimento.AddDays(1),
                 PercentualMulta = dadosBoleto.PercentualMulta,
                 TipoCodigoMulta = TipoCodigoMulta.Valor,
+                CodigoInstrucao1 = "16",
 
                 Pagador = DadosSacado(sacado, endereco),
             };
