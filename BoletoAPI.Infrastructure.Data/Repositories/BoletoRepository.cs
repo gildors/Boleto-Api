@@ -147,11 +147,14 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 DataProcessamento = dadosBoleto.DataProcessamento,
                 DataVencimento = dadosBoleto.Vencimento,
                 DataJuros = dadosBoleto.Vencimento.AddDays(1),
+                ValorMulta = (dadosBoleto.PercentualMulta / 100) * dadosBoleto.Valor,
+                ValorAbatimento = (dadosBoleto.PercentualMulta / 100) * dadosBoleto.Valor,
+                ValorJurosDia = (dadosBoleto.PercentualJurosDia / 100) * dadosBoleto.Valor,
                 PercentualJurosDia = dadosBoleto.PercentualJurosDia,
                 TipoJuros = TipoJuros.Simples,
                 DataMulta = dadosBoleto.Vencimento.AddDays(1),
                 PercentualMulta = dadosBoleto.PercentualMulta,
-                TipoCodigoMulta = TipoCodigoMulta.Percentual,
+                TipoCodigoMulta = TipoCodigoMulta.Valor,
 
                 Pagador = DadosSacado(sacado, endereco),
             };
