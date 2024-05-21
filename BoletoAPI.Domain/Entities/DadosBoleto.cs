@@ -15,9 +15,9 @@ namespace BoletoAPI.Domain.Entities
         public decimal Valor { get; private set; } = decimal.Zero;
         public decimal PercentualMulta { get; private set; } = decimal.Zero;
         public TipoCodigoMulta? TipoCodigoMulta { get; set; } = BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
-        public DateTime? DataMulta { get; set; } = DateTime.MinValue;
+        public DateTime? DataMulta { get; set; } 
         public decimal PercentualJurosDia { get; private set; } = decimal.Zero;
-        public DateTime? DataJuros { get; set; } = DateTime.MinValue;
+        public DateTime? DataJuros { get; set; } 
         public TipoJuros? TipoJuros { get; set; } = BoletoNetCore.TipoJuros.Simples;
         
         public DateTime DataEmissao { get; private set; } = DateTime.MinValue;
@@ -123,6 +123,8 @@ namespace BoletoAPI.Domain.Entities
             PercentualMulta = percentualMulta ?? 0;
             TipoJuros = tipoJuros ?? BoletoNetCore.TipoJuros.Simples;
             TipoCodigoMulta = tipoCodigoMulta ?? BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
+            DataJuros = dataJuros;
+            DataMulta = dataMulta;
             PercentualJurosDia = percentualJurosDia ?? 0;
             CodigoProtesto = codigoProtesto ?? 0;
             DiasProtesto = diasProtesto ?? 0 ;
