@@ -160,7 +160,10 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
             };
             
             
-           
+            if (boleto.PercentualMulta > (decimal)99.99)
+                throw new Exception("A multa deve ser menor que 100%");
+            if (boleto.PercentualJurosDia > (decimal)99.99)
+                throw new Exception("O Juros deve ser menor que 100%");
 
             boleto.ValidarDados();
             return boleto;
