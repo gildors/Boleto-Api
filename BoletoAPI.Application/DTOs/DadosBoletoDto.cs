@@ -39,9 +39,6 @@ namespace BoletoAPI.Application.Dtos
 
         [DisplayName("Tipo Multaa")]
         public TipoCodigoMulta TipoCodigoMulta { get; set; } = BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
-        
-        [DisplayName("Data Multa")]
-        public DateTime DataMulta { get; set; } = DateTime.MinValue;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Emissão")]
