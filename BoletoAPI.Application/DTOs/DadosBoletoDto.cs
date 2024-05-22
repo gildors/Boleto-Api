@@ -30,8 +30,6 @@ namespace BoletoAPI.Application.Dtos
         
         [DisplayName("Tipo do Juros")]
         public TipoJuros? TipoJuros { get; set; } = BoletoNetCore.TipoJuros.Simples;
-
-        [DisplayName("Tipo do Juros")] public DateTime DataJuros { get; set; } = DateTime.MinValue;
         
         [DisplayName("Percentual Juros por Dia")]
         public decimal? PercentualJurosDia { get; set; } = decimal.Zero;
