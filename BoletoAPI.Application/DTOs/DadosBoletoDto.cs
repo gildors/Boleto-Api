@@ -28,17 +28,12 @@ namespace BoletoAPI.Application.Dtos
         [DisplayName("Valor")]
         public decimal? Valor { get; set; } = decimal.Zero;
         
-        [DisplayName("Tipo do Juros")]
-        public TipoJuros? TipoJuros { get; set; } = BoletoNetCore.TipoJuros.Simples;
-        
         [DisplayName("Percentual Juros por Dia")]
         public decimal? PercentualJurosDia { get; set; } = decimal.Zero;
         
         [DisplayName("Percentual de Multa")]
         public decimal? PercentualMulta { get; set; } = decimal.Zero;
-
-        [DisplayName("Tipo Multaa")]
-        public TipoCodigoMulta TipoCodigoMulta { get; set; } = BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
+        
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Emissão")]
