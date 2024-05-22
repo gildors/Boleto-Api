@@ -47,11 +47,7 @@ namespace BoletoAPI.Domain.Entities
             DateTime? dataProcessamento, 
             string? tipoBanco,
             int? codigoProtesto,
-            int? diasProtesto,
-            DateTime? dataMulta,
-            DateTime? dataJuros,
-            TipoJuros? tipoJuros,
-            TipoCodigoMulta? tipoCodigoMulta)
+            int? diasProtesto)
         {
             ValidacaoEntidade(
                 nossoNumero, 
@@ -64,11 +60,7 @@ namespace BoletoAPI.Domain.Entities
                 dataProcessamento, 
                 tipoBanco,
                 codigoProtesto,
-                diasProtesto,
-                dataJuros,
-                dataMulta,
-                tipoCodigoMulta,
-                tipoJuros);
+                diasProtesto);
         }
 
         #endregion Construtores
@@ -86,11 +78,7 @@ namespace BoletoAPI.Domain.Entities
             DateTime? dataProcessamento, 
             string? tipoBanco,
             int? codigoProtesto,
-            int? diasProtesto,
-            DateTime? dataMulta,
-            DateTime? dataJuros,
-            TipoCodigoMulta? tipoCodigoMulta,
-            TipoJuros? tipoJuros
+            int? diasProtesto
            )
         {
             if (string.IsNullOrEmpty(nossoNumero))
@@ -121,10 +109,6 @@ namespace BoletoAPI.Domain.Entities
             Valor = valor.Value;
             DataEmissao = dataEmissao.Value;
             PercentualMulta = percentualMulta ?? 0;
-            TipoJuros = tipoJuros ?? BoletoNetCore.TipoJuros.Simples;
-            TipoCodigoMulta = tipoCodigoMulta ?? BoletoNetCore.Enums.TipoCodigoMulta.Percentual;
-            DataJuros = dataJuros;
-            DataMulta = dataMulta;
             PercentualJurosDia = percentualJurosDia ?? 0;
             CodigoProtesto = codigoProtesto ?? 0;
             DiasProtesto = diasProtesto ?? 0 ;
