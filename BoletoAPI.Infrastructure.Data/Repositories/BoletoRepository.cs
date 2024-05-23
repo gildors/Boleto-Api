@@ -132,6 +132,8 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 
         private static Boleto GerarLayoutBoleto(IBanco banco, DadosBoleto dadosBoleto, Sacado sacado, DadosEndereco endereco)
         {
+            TimeZoneInfo fusoHorarioDeBrasilia = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+            DateTime dataHoraBrasilia = TimeZoneInfo.ConvertTime(DateTime.Now, fusoHorarioDeBrasilia);
             var boleto = new Boleto(banco)
             {
                 ImprimirValoresAuxiliares = true,
@@ -143,7 +145,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 ImprimirMensagemInstrucao = true,
                 CodigoProtesto = (TipoCodigoProtesto)dadosBoleto.CodigoProtesto,
                 DiasProtesto =  dadosBoleto.DiasProtesto,
-                DataEmissao = dadosBoleto.DataEmissao,
+                DataEmissao = dataHoraBrasilia,
                 DataProcessamento = dadosBoleto.DataProcessamento,
                 DataVencimento = dadosBoleto.Vencimento,
                 DataJuros = dadosBoleto.Vencimento,
